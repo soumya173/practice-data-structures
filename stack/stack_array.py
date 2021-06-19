@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from stack import Stack
+from .stack import Stack
 
 class StackArray(Stack):
     def __init__(self, size=20):
@@ -10,29 +10,32 @@ class StackArray(Stack):
 
     def push(self, data):
         if self.__top >= self.__SIZE:
-            print("Stack is full")
-            return
+            raise OverflowError(f"Stack is full: {data}")
         self.__stack.append(data)
         self.__top += 1
-        print(f"Pushed: {data}")
+        return data
 
     def pop(self):
         if self.__top == 0:
-            print("Stack is empty")
-            return
+            raise IndexError("Stack is empty")
         data = self.__stack.pop()
         self.__top -= 1
-        print(f"Popped: {data}")
+        return data
 
     def seek(self):
         if self.__top == 0:
-            print("Stack is empty")
-            return
-        print(f"Seek: {self.__stack[self.__top]}")
+            raise IndexError("Stack is empty")
+        return self.__stack[self.__top-1]
+
+    def clear(self):
+        self.__stack.clear()
+        self.__top = 0
 
     def display(self):
         if self.__top == 0:
-            print("Stack is empty")
-            return
+            raise IndexError("Stack is empty")
         for data in self.__stack:
             print(data, end=' ')
+
+    def get_stack(self):
+        return self.__stack

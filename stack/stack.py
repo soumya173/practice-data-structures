@@ -18,3 +18,11 @@ class Stack(ABC):
     @abstractmethod
     def seek(self):
         pass
+
+    @abstractmethod
+    def clear(self):
+        pass
+
+    @abstractmethod
+    def get_stack(self):
+        pass

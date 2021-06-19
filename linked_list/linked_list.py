@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from abc import ABC, abstractmethod
-from node import Node
+from .node import Node
 
 class LinkedList(ABC):
     def __init__(self):
@@ -31,5 +31,17 @@ class LinkedList(ABC):
         pass
 
     @abstractmethod
+    def length(self):
+        pass
+
+    @abstractmethod
     def display(self):
+        pass
+
+    @abstractmethod
+    def clear(self):
+        pass
+
+    @abstractmethod
+    def get_list(self):
         pass
