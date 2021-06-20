@@ -49,12 +49,14 @@ class SinglyLinkedList(LinkedList):
             prev_node = next_node
             next_node = next_node.next
         prev_node.next = None
+        return prev_node.data
 
     def remove_node_at_beginning(self):
         if self.head is None:
             raise IndexError("Singly List is empty")
         node = self.head
         self.head = node.next
+        return self.head.data
 
     def remove_node_at_nth_pos(self, nth):
         if self.head is None:
@@ -73,6 +75,7 @@ class SinglyLinkedList(LinkedList):
             next_node = next_node.next
         prev_node.next = next_node.next
         next_node.next = None
+        return next_node.data
 
     def length(self):
         counter = 0
