@@ -25,11 +25,11 @@ class SinglyLinkedList(LinkedList):
         list_length = self.length()
         if nth > list_length:
             raise OverflowError(f"Nth value ({nth}) is more than list length ({list_length})")
-        if self.head == None:
+        if self.head == None or nth == 0:
             self.add_node_at_beginning(data)
             return data
         node = self.head
-        counter = 0
+        counter = 1
         new_node = Node(data)
         while(node is not None):
             if counter == nth:
@@ -40,14 +40,39 @@ class SinglyLinkedList(LinkedList):
         node.next = new_node
         return data
 
-    def remove_node_at_last(self, data):
-        pass
+    def remove_node_at_last(self):
+        if self.head is None:
+            raise IndexError("Singly List is empty")
+        next_node = self.head
+        prev_node = None
+        while(next_node.next is not None):
+            prev_node = next_node
+            next_node = next_node.next
+        prev_node.next = None
 
-    def remove_node_at_beginning(self, data):
-        pass
+    def remove_node_at_beginning(self):
+        if self.head is None:
+            raise IndexError("Singly List is empty")
+        node = self.head
+        self.head = node.next
 
     def remove_node_at_nth_pos(self, nth):
-        pass
+        if self.head is None:
+            raise IndexError("Singly List is empty")
+        list_length = self.length()
+        if nth > list_length:
+            raise OverflowError(f"Nth value ({nth}) is more than list length ({list_length})")
+        next_node = self.head
+        prev_node = None
+        counter = 1
+        while(next_node.next is not None):
+            if counter == nth:
+                break
+            counter += 1
+            prev_node = next_node
+            next_node = next_node.next
+        prev_node.next = next_node.next
+        next_node.next = None
 
     def length(self):
         counter = 0
@@ -76,3 +101,4 @@ class SinglyLinkedList(LinkedList):
         while(node is not None):
             print(node.data, end=' -> ')
             node = node.next
+        print("")
