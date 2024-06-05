@@ -28,6 +28,3 @@ def combine_two_array(arr_a, arr_b):
 		sorted_arr.append(arr_b[j])
 		j += 1
 	return sorted_arr
-
-unsorted_arr = [3,45,1,3,5,75,23,45,67,22]
-print(merge_sort(unsorted_arr))
